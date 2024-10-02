@@ -1,0 +1,25 @@
+name: Generic Test
+run_name: Running ${{ inputs.testname }} on ${{ inputs.environment }}
+
+on:
+  workflow_call:
+    inputs:
+      testname:
+        required: true
+        type: string
+      environment:
+        required: true
+        type: choice
+        default: "sandbox"
+        options:
+          - "sandbox"
+          - "stage"
+          - "both"
+
+jobs:
+  example_job:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hello world, an app is deployed"
+      - run: echo "Running tests ${{ inputs.testname }}"
