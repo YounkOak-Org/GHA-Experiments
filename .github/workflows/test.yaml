@@ -1,4 +1,4 @@
-name: Test
+name: Run one test
 run-name: Running ${{ inputs.testname }} on ${{ inputs.environment }}
 
 on:

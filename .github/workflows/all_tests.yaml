@@ -1,0 +1,52 @@
+name: Run one test
+run-name: Running all tests on ${{ inputs.environment }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        required: true
+        type: choice
+        default: "sandbox"
+        options:
+          - "sandbox"
+          - "stage"
+          - "both"
+        description: "env"
+
+jobs:
+  setup:
+    name: Some setup
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hello
+
+  test1:
+    needs: setup
+    uses: ./.github/workflows/exportable_workflow.yaml
+    with:
+      testname: test1
+      environment: ${{ inputs.environment }}
+
+  test2:
+    needs: setup
+    uses: ./.github/workflows/exportable_workflow.yaml
+    with:
+      testname: test2
+      environment: ${{ inputs.environment }}
+
+  test3:
+    needs: setup
+    uses: ./.github/workflows/exportable_workflow.yaml
+    with:
+      testname: test3
+      environment: ${{ inputs.environment }}
+
+  test3a:
+    needs:
+     - setup
+     - test3
+    uses: ./.github/workflows/exportable_workflow.yaml
+    with:
+      testname: test3a
+      environment: ${{ inputs.environment }}
