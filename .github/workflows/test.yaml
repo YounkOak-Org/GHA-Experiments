@@ -1,0 +1,25 @@
+name: Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      testname:
+        required: true
+        type: string
+        description: "The test name"
+      environment:
+        required: true
+        type: choice
+        default: "sandbox"
+        options:
+          - "sandbox"
+          - "stage"
+          - "both"
+        description: "env"
+
+jobs:
+  test:
+    uses: ./.github/workflows/exportable_workflow.yaml
+    with:
+      testname: ${{ inputs.testname }}
+      environment: ${{ inputs.environment }}
