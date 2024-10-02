@@ -1,5 +1,5 @@
 name: Generic Test
-run_name: Running ${{ inputs.testname }} on ${{ inputs.environment }}
+run-name: Running ${{ inputs.testname }} on ${{ inputs.environment }}
 
 on:
   workflow_call:
@@ -9,12 +9,7 @@ on:
         type: string
       environment:
         required: true
-        type: choice
-        default: "sandbox"
-        options:
-          - "sandbox"
-          - "stage"
-          - "both"
+        type: string
 
 jobs:
   example_job:
