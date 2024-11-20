@@ -1,4 +1,4 @@
-name: Run one test
+name: Run all tests
 run-name: Running all tests on ${{ inputs.environment }}
 
 on:

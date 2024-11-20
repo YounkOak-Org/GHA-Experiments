@@ -1,0 +1,26 @@
+name: Generic Test
+run-name: Running ${{ inputs.testname }} on ${{ inputs.environment }}
+
+on:
+  workflow_call:
+
+env:
+  TEST: "algo"
+
+jobs:
+  example_job:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            if (!process.env.TEST) {
+              core.setFailed('Test esta vacio')
+            }
+
+            const fs = require('fs')
+            if !(fs.existsSync('./test.txt')) {
+              core.setFailed('No existe el archivo')
+            }
