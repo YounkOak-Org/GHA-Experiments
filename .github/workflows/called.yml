@@ -21,6 +21,6 @@ jobs:
             }
 
             const fs = require('fs')
-            if !(fs.existsSync('./test.txt')) {
+            if (!fs.existsSync('./test.txt')) {
               core.setFailed('No existe el archivo')
             }
