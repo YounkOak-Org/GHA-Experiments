@@ -13,14 +13,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/github-script@v7
-        with:
-          script: |
-            if (!process.env.TEST) {
-              core.setFailed('Test esta vacio')
-            }
-
-            const fs = require('fs')
-            if (!fs.existsSync('./nontest.txt')) {
-              core.setFailed('No existe el archivo')
-            }
+      - shell: bash
+        run: echo env
