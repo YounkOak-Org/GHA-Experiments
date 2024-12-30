@@ -2,6 +2,7 @@ name: Generic Test
 run-name: Running ${{ inputs.testname }} on ${{ inputs.environment }}
 
 on:
+  workflow_dispatch:
   workflow_call:
 
 env:
