@@ -10,6 +10,7 @@ jobs:
     permissions:
       contents: read
     steps:
+      - uses: actions/checkout@v4
       - name: Docker Metadata 
         uses: docker/metadata-action@v5
         with:
