@@ -1,0 +1,24 @@
+name: Docker Tests
+run-name: Docker Metadata test run
+
+on:
+  workflow_dispatch:
+
+jobs:
+  gen-tags:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Docker Metadata 
+        uses: docker/metadata-action@v5
+        with:
+          context: git
+          images: name/app
+          tags: |
+            type=semver,pattern={{version}},suffix={{sha}},enable=${{github.ref_type == 'tag'}}
+            type=semver,pattern={{version}},enable=${{github.ref_type == 'tag'}}
+            type=semver,pattern={{raw}},enable=${{github.ref_type == 'tag'}}
+            type=raw,value=latest,enable=${{github.ref_type == 'tag'}}
+            type=raw,value={{branch}},suffix={{sha}},enable=${{github.ref_type != 'tag'}}
+            type=raw,value={{branch}},enable=${{github.ref_type != 'tag'}}
