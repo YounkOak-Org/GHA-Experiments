@@ -19,7 +19,7 @@ jobs:
       - shell: bash
         run: |
 
-          lines="$(echo '${{ inputs.test-multiline }}' | tr '\n' '%0A')"
+          lines="$(echo '${{ inputs.test-multiline }}' | tr '\n' ' %0A ')"
         
           echo '::notice::Test Single Line'
           echo '::notice::${{ inputs.test-multiline }}'
