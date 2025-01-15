@@ -21,7 +21,7 @@ jobs:
         run: |
 
           lines="$(echo '${{ steps.meta.outputs.tags }}' | tr '\n' ', ')"
-          lines2="$(echo '${{ steps.meta.outputs.tags }}' | tr '\n' '%0A')"
+          lines2="$(echo '${{ steps.meta.outputs.tags }}' | tr '\n' ', %0A')"
           lines3="$(echo '${{ steps.meta.outputs.tags }}' | tr '\n' '%0A')"
         
           echo '::notice::Test Single Line'
