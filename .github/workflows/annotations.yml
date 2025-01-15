@@ -21,11 +21,11 @@ jobs:
         run: |
 
           lines="$(echo '${{ steps.meta.outputs.tags }}' | tr '\n' ', ')"
-          lines2="$(echo '${{ steps.meta.outputs.tags }}' | tr '\n' '\%0A')"
+          lines2="$(echo '${{ steps.meta.outputs.tags }}' | tr '\n' '%0A')"
           lines3="$(echo '${{ steps.meta.outputs.tags }}' | tr '\n' '%0A')"
         
           echo '::notice::Test Single Line'
           echo "::notice::Bare - '${{ steps.meta.outputs.tags }}'"
           echo "::notice::1Tags Generated=[ ${lines}]"
-          echo "::notice::2Tags Generated=[" '${{steps.meta.outputs.tags}}' ']'
+          echo "::notice::2Tags Generated=[" "${lines2}}" ']'
           echo "::notice::3Tags Generated=[" ${lines3} "]"
