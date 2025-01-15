@@ -10,6 +10,12 @@ on:
           repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
           repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
           repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
+          repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
+          repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
+          repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
+          repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
+          repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
+          repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
 
 jobs:
 
@@ -19,7 +25,7 @@ jobs:
       - shell: bash
         run: |
 
-          lines="$(echo '${{ inputs.test-multiline }}' | tr '\n' ' %0A ')"
+          lines="$(echo '${{ inputs.test-multiline }}' | tr '\n' '%0A')"
         
           echo '::notice::Test Single Line'
           echo '::notice::${{ inputs.test-multiline }}'
