@@ -11,4 +11,4 @@ jobs:
       - shell: bash
         run: |
           echo '::notice::Test Single Line'
-          echo '::notice::Test First Line<br>Test Second Line'
+          echo '::notice::Test First Line%0ATest Second Line'
