@@ -2,6 +2,14 @@ name: Test annotations
 
 on:
   workflow_dispatch:
+    inputs:
+      test-multiline:
+        type: string
+        default: |
+          Tags generated:
+          repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
+          repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
+          repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
 
 jobs:
 
@@ -10,5 +18,9 @@ jobs:
     steps:
       - shell: bash
         run: |
+
+          lines="$(echo '${{ inputs.test-multiline }}' | tr '\n' '%0A')"
+        
           echo '::notice::Test Single Line'
-          echo '::notice::Test First Line%0ATest Second Line'
+          echo '::notice::${{ inputs.test-multiline }}'
+          echo '::notice::${lines}'
