@@ -1,0 +1,14 @@
+name: Test annotations
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  annotate:
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          echo ::notice::Test Single Line
+          echo ::notice::Test First Line<br>Test Second Line
