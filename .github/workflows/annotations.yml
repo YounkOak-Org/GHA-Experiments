@@ -26,6 +26,6 @@ jobs:
         
           echo '::notice::Test Single Line'
           echo "::notice::Bare - '${{ steps.meta.outputs.tags }}'"
-          echo "::notice::1Tags Generated=[${lines}]"
-          echo "::notice::2Tags Generated=[" '${steps.meta.outputs.tags}' ']'
+          echo "::notice::1Tags Generated=[ ${lines}]"
+          echo "::notice::2Tags Generated=[" '${{steps.meta.outputs.tags}}' ']'
           echo "::notice::3Tags Generated=[" ${lines3} "]"
