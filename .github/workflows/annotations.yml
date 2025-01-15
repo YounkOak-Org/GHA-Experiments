@@ -6,7 +6,6 @@ on:
       test-multiline:
         type: string
         default: |
-          Tags generated:
           repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
           repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
           repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
@@ -25,8 +24,8 @@ jobs:
       - shell: bash
         run: |
 
-          lines="$(echo '${{ inputs.test-multiline }}' | tr '\n' '%0A')"
+          lines="$(echo '${{ inputs.test-multiline }}' | tr '\n' ', ')"
         
           echo '::notice::Test Single Line'
           echo '::notice::${{ inputs.test-multiline }}'
-          echo "::notice::${lines}"
+          echo "::notice::Tags Generated=[${lines}]"
