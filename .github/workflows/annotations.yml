@@ -17,6 +17,12 @@ jobs:
             location1/image
             locationB/image
             locationC/image
+          tags: |
+            tag1
+            tag2
+            tag3
+            tag4
+            tag5
       - shell: bash
         run: |
 
