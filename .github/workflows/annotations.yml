@@ -21,11 +21,19 @@ jobs:
   annotate:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+      - uses: docker/metadata-action@v5
+        id: meta
+        with:
+          images: |
+            location1/image
+            locationB/image
+            locationC/image
       - shell: bash
         run: |
 
           lines="$(echo '${{ inputs.test-multiline }}' | tr '\n' ', ')"
         
           echo '::notice::Test Single Line'
-          echo '::notice::${{ inputs.test-multiline }}'
+          echo '::notice::${{ inputs.steps.meta.outputs.tags }}'
           echo "::notice::Tags Generated=[${lines}]"
