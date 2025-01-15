@@ -2,19 +2,7 @@ name: Test annotations
 
 on:
   workflow_dispatch:
-    inputs:
-      test-multiline:
-        type: string
-        default: |
-          repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
-          repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
-          repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
-          repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
-          repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
-          repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
-          repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
-          repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
-          repo-tag/onedhtads/jasdhjd:123123-asdfa1-f3
+  push:
 
 jobs:
 
@@ -32,8 +20,8 @@ jobs:
       - shell: bash
         run: |
 
-          lines="$(echo '${{ inputs.test-multiline }}' | tr '\n' ', ')"
+          lines="$(echo '${{ steps.meta.outputs.tags }}' | tr '\n' ', ')"
         
           echo '::notice::Test Single Line'
-          echo '::notice::${{ inputs.steps.meta.outputs.tags }}'
+          echo '::notice::${{ steps.meta.outputs.tags }}'
           echo "::notice::Tags Generated=[${lines}]"
