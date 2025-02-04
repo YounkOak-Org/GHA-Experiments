@@ -10,32 +10,23 @@ jobs:
       
   job2:
     needs: [job1]
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Hello"
-      
-  job3:
-    needs: [job2]
     environment: Dev
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello"
-      
-  job4:
-    needs: [job3]
-    runs-on: ubuntu-latest
-    steps:
+      - run: echo "Hello"
+      - run: echo "Hello"
+      - run: echo "Hello"
       - run: echo "Hello"
       
-  job5:
-    needs: [job4]
+  job3:
+    needs: [job2]
     environment: Stage
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello"
-      
-  job6:
-    needs: [job5]
-    runs-on: ubuntu-latest
-    steps:
+      - run: echo "Hello"
+      - run: echo "Hello"
+      - run: echo "Hello"
+      - run: echo "Hello"
       - run: echo "Hello"
