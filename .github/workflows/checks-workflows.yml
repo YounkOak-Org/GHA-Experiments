@@ -14,3 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: reviewdog/action-actionlint@v1
+        with:
+          level: info
+          reporter: github-check
+          fail_level: error
