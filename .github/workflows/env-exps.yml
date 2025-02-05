@@ -23,11 +23,12 @@ jobs:
       - run: sleep 5
 
   test-dev:
+    name: Dev Tests
     needs: deploy-dev
-    name: Regressions against Dev
     uses: ./.github/workflows/test-regressions.yml
 
   deploy-stage:
+    name: Deploy to Stage
     needs: [test-dev]
     environment: Stage
     runs-on: ubuntu-latest
@@ -40,6 +41,6 @@ jobs:
       - run: sleep 5
       
   test-stage:
+    name: Stage Tests
     needs: deploy-stage
-    name: Regressions against Stage
     uses: ./.github/workflows/test-regressions.yml
