@@ -2,6 +2,10 @@ name: "Environment Tests"
 on:
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   build-deps:
     name: Build Image/Binaries
