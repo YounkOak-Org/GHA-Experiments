@@ -12,6 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello"
+
+
+  deploy-dev2:
+    name: Deploy to Dev 2
+    needs: [build-deps]
+    uses: ./.github/workflows/test-deploy.yml
       
   deploy-dev:
     name: Deploy to Dev
