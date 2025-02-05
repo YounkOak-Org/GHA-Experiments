@@ -3,30 +3,43 @@ on:
   workflow_dispatch:
 
 jobs:
-  job1:
+  build-deps:
+    name: Build Image/Binaries
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello"
       
-  job2:
-    needs: [job1]
+  deploy-dev:
+    name: Deploy to Dev
+    needs: [build-deps]
     environment: Dev
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello"
-      - run: echo "Hello"
-      - run: echo "Hello"
-      - run: echo "Hello"
-      - run: echo "Hello"
-      
-  job3:
-    needs: [job2]
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+
+  test-dev:
+    needs: deploy-dev
+    name: Regressions against Dev
+    uses: ./.github/workflows/test-regressions.yml
+
+  deploy-stage:
+    needs: [test-dev]
     environment: Stage
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello"
-      - run: echo "Hello"
-      - run: echo "Hello"
-      - run: echo "Hello"
-      - run: echo "Hello"
-      - run: echo "Hello"
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      - run: sleep 5
+      
+  test-stage:
+    needs: deploy-stage
+    name: Regressions against Stage
+    uses: ./.github/workflows/test-regressions.yml
