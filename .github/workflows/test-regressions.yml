@@ -1,0 +1,30 @@
+name: Generic Regressions
+on:
+  workflow_call:
+
+jobs:
+
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hello world
+
+  testsA:
+    needs: check
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [1, 2, 3]
+        test: ["one", "two"]
+    steps:
+      - run: echo Hello World
+      
+  testsB:
+    needs: check
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [1, 2]
+        test: ["one", "two"]
+    steps:
+      - run: echo Hello World
