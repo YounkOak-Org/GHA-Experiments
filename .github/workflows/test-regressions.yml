@@ -1,5 +1,6 @@
 name: Generic Regressions
 on:
+  workflow_dispatch:
   workflow_call:
 
 jobs:
@@ -24,7 +25,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [1, 2]
-        test: ["one", "two"]
+        include:
+          - version: 1
+            test: one
+          - version: 2
+            test: two
+          - version: 3
+            test: three
+        exclude:
+          - version: 1
+          - version: 2
     steps:
       - run: echo Hello World
